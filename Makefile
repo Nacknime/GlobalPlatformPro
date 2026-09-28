@@ -1,5 +1,6 @@
  # same as Github
-export TZ = UTC
+export TZ := UTC
+export LC_ALL := C.UTF-8
 export JAVA_HOME ?= /Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home
 
 MVN_OPTS = -Dmaven.javadoc.skip=true -Dmaven.test.skip=true -Dspotbugs.skip=true
@@ -23,13 +24,13 @@ source:
 	./mvnw spotless:apply
 
 fast:
-	./mvnw -T1C install -Dmaven.test.skip=true -Dspotbugs.skip=true
+	./mvnw install -Dmaven.test.skip=true -Dspotbugs.skip=true
 
 ci:
 	CI=true ./mvnw -U -P exe
 
 versions:
-	./mvnw -B --no-transfer-progress $(VERSIONS):display-parent-updates $(VERSIONS):display-dependency-updates $(VERSIONS):display-plugin-updates $(VERSIONS):display-extension-updates $(VERSION_RULES)
+	./mvnw -B $(VERSIONS):display-parent-updates $(VERSIONS):display-dependency-updates $(VERSIONS):display-plugin-updates $(VERSIONS):display-extension-updates $(VERSION_RULES)
 
 xml:
 	@command -v xmllint >/dev/null 2>&1 || { echo "xmllint not found (install libxml2-utils)"; exit 1; }
