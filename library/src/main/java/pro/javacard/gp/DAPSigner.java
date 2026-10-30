@@ -51,7 +51,7 @@ public final class DAPSigner {
 
     public static byte[] mac(final CAPFile cap, final Key key, final GPData.LFDBH hash) {
         final var dtbs = cap.getLoadFileDataHash(hash.algo);
-        if(key.getAlgorithm().equals("aes")) {
+        if(key.getAlgorithm().equals("AES")) {
             log.info("Signing DAP with {}-bit AES CMAC and {}", key.getEncoded().length * 8, hash);
             return GPCrypto.aes_cmac(key.getEncoded(), dtbs, 128);
         } else if(key.getAlgorithm().equals("DESede")) {
