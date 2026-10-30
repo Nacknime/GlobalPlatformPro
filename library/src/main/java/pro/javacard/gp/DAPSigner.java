@@ -3,17 +3,16 @@
 
 package pro.javacard.gp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pro.javacard.capfile.CAPFile;
+
 import java.security.GeneralSecurityException;
 import java.security.Key;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.interfaces.ECPrivateKey;
 import java.security.interfaces.RSAPrivateKey;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import pro.javacard.capfile.CAPFile;
 
 public final class DAPSigner {
 
